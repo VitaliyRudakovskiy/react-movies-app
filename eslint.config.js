@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+
 import js from '@eslint/js';
 import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';
@@ -7,7 +10,6 @@ import { globalIgnores } from 'eslint/config';
 import prettierPlugin from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
 import pluginReact from 'eslint-plugin-react';
-import pluginReactHooks from 'eslint-plugin-react-hooks';
 
 export default tseslint.config([
   globalIgnores(['dist']),
@@ -22,12 +24,11 @@ export default tseslint.config([
       js,
       prettier: prettierPlugin,
       react: pluginReact,
-      'react-hooks': pluginReactHooks,
     },
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        project: ['./tsconfig.json'],
+        project: './tsconfig.eslint.json',
         ecmaVersion: 'latest',
       },
       globals: globals.browser,
